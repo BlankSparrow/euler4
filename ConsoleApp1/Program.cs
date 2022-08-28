@@ -29,31 +29,38 @@ namespace PalindromeLargest
             return num == recursiveReverse(num, 0);
         }
 
+
         static void Main(string[] args)
         {
-            List<(int x, int y)> foundPalendrones = new List<(int, int)>();
+            List<(int x, int y)> palendrones = new List<(int, int)>();
             (int x, int y, int result) largestPalendrone = (0, 0, 0);
 
             int checkCount = 0;
             int maxNumber = 999;
+            int minNumber = 0;
 
-            for (int x = 1; x <= maxNumber; x++)
+            for (int x = maxNumber; x > minNumber; x--)
             {
-                for (int y = 1; y <= maxNumber; y++)
+                for (int y = maxNumber; y > minNumber; y--)
                 {
                     checkCount++;
                     if (isPalindrome(x * y))
                     {
-                        foundPalendrones.Add((x, y));
+                        palendrones.Add((x, y));
                         if (largestPalendrone.result < x * y)
                         {
                             largestPalendrone = (x, y, x * y);
                         }
+
+                        minNumber = (Math.Min(x, y));
+                        maxNumber = (Math.Max(x, y));
+
+                        break;
                     }
                 }
             }
 
-            foreach (var palindrome in foundPalendrones)
+            foreach (var palindrome in palendrones)
             {
                 Console.WriteLine($"{palindrome.x} * {palindrome.y} = {palindrome.x * palindrome.y}");
 
