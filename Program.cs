@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PalindromeLargest
 {
@@ -30,7 +27,7 @@ namespace PalindromeLargest
         }
 
 
-        static void Main(string[] args)
+       public static void Main(string[] args)
         {
             List<(int x, int y)> palendrones = new List<(int, int)>();
             (int x, int y, int result) largestPalendrone = (0, 0, 0);
@@ -63,7 +60,6 @@ namespace PalindromeLargest
             foreach (var palindrome in palendrones)
             {
                 Console.WriteLine($"{palindrome.x} * {palindrome.y} = {palindrome.x * palindrome.y}");
-
             }
 
             Console.WriteLine($"largest = {largestPalendrone.x} * {largestPalendrone.y} = {largestPalendrone.result}");
