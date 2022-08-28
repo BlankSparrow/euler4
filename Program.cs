@@ -31,6 +31,8 @@ namespace PalindromeLargest
 
        public static void Main(string[] args)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             // Calculate what our max number is based on the required digits. For example, 3 will result in 999
             int startingMaxNumber = 0;
             for(int i = 1; i <= _numOfDigits; i++)
@@ -42,29 +44,27 @@ namespace PalindromeLargest
             (int x, int y, int result) largestPalendrone = (0, 0, 0);
 
             int checkCount = 0;
-            int maxNumber = startingMaxNumber;
             int minNumber = 0;
 
 
             // Start from the largest number we can have, and count backwards
             for (int x = startingMaxNumber; x > minNumber; x--)
             {
-                for (int y = maxNumber; y > minNumber; y--)
+                for (int y = x; y > minNumber; y--)
                 {
                     checkCount++;
 
-                    if (isPalindrome(x * y))
-                    {
-                        Console.WriteLine($"{x} * {y} = {x * y}");
+                    int currentNumber = x * y;
 
-                        if (largestPalendrone.result < x * y)
+                    if (isPalindrome(currentNumber))
+                    {
+                        if (largestPalendrone.result < currentNumber)
                         {
-                            largestPalendrone = (x, y, x * y);
+                            largestPalendrone = (x, y, currentNumber);
                         }
 
                         // Update the bounds of what we are calculating
                         minNumber = (Math.Min(x, y));
-                        maxNumber = (Math.Max(x, y));
 
                         // since we have found the largest possible palendrone for number x, move to the next one
                         break;
@@ -72,8 +72,11 @@ namespace PalindromeLargest
                 }
             }
 
+            watch.Stop();
+
             Console.WriteLine($"largest = {largestPalendrone.x} * {largestPalendrone.y} = {largestPalendrone.result}");
             Console.WriteLine($"number of checks made = {checkCount}");
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
 
             Console.ReadKey();
         }
