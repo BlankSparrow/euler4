@@ -40,7 +40,6 @@ namespace PalindromeLargest
                 startingMaxNumber = (startingMaxNumber * 10) + 9;
             }
 
-
             (int x, int y, int result) largestPalendrone = (0, 0, 0);
 
             int checkCount = 0;
