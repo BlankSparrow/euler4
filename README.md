@@ -11,11 +11,15 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 ---
 ![image](https://user-images.githubusercontent.com/6037005/187058001-f39277c2-4d37-4671-8e6d-6e41ae9c6670.png)
 
+without logging over 1000 tests, this on average took 1314645 ticks ( 131 ms ) to complete.
+
 No attempt was made to be efficent, but instead was to validate what the true answer is. 
 
 **After Optimisations**
 ---
 ![image](https://user-images.githubusercontent.com/6037005/187058305-30dcafc3-8f3f-44f7-8961-1b98ca04e870.png)
+
+Without logging over 1000 tests, this on average took 16340 ticks ( 1 ms ) to complete.
 
 In this approach, I decided to count backwards as there is no point going though all the small pointless numbers.
 Next, I started using a traveling minimum for the for loops as going below the minimum number is always going to be a smaller end result.
